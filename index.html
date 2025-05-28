@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Enhanced Homepage Concept</title>
+    <style>
+        /* --- Global Styles --- */
+        :root {
+            --primary-dark: #1a253c; /* Dark Blue/Grey */
+            --primary-light: #ffffff;
+            --accent-color: #ff4f00; /* Orange/Red Accent */
+            --secondary-accent: #00b4d8; /* A lighter blue for contrast if needed */
+            --text-dark: #333333;
+            --text-light: #f8f9fa;
+            --text-muted: #6c757d;
+            --bg-light-gray: #f4f6f8;
+            --border-color: #dee2e6;
+            --font-primary: 'Roboto', 'Arial', sans-serif; /* Using a more common modern font */
+            --font-secondary: 'Montserrat', 'Arial', sans-serif; /* For headings */
+        }
+
+        /* Basic Reset & Body */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--primary-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Headings & Text */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-secondary);
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; }
+        h3 { font-size: 1.6rem; }
+        p { margin-bottom: 1.2rem; color: var(--text-muted); }
+        a { color: var(--accent-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: #e04500; /* Darker accent */ }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: var(--primary-light);
+            border: 2px solid var(--accent-color);
+            border-radius: 50px; /* Pill shape */
+            text-decoration: none;
+            font-weight: bold;
+            font-family: var(--font-secondary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #f2e7e6; /* A lighter shade for hover, or keep original and just change border/transform */
+            color: var(--accent-color); /* Text color change on hover */
+            border-color: #e04500;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-light);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        .section-alt { /* For alternating background colors */
+            background-color: var(--bg-light-gray);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-0 { margin-bottom: 0 !important; }
+        .mt-3 { margin-top: 1rem !important; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--primary-dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: var(--font-secondary);
+            color: var(--primary-light);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center; /* Align items vertically for button */
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: var(--primary-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            font-family: var(--font-secondary);
+            transition: color 0.2s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+        }
+        nav ul li a.btn { /* Specific styling for button in nav if needed */
+            margin-left: 15px; /* Retaining existing margin */
+            padding: 8px 18px; /* Retaining existing padding */
+        }
+
+
+        /* --- Hero Section --- */
+        .hero {
+            background-color: var(--primary-dark);
+            background-image: linear-gradient(rgba(26, 37, 60, 0.85), rgba(26, 37, 60, 0.85)), url('https://via.placeholder.com/1920x1080.png?text=Modern+Digital+Agency');
+            background-size: cover;
+            background-position: center center;
+            color: var(--primary-light);
+            padding: 120px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 300;
+        }
+        .hero .btn {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Client Logos Section --- */
+        .client-logos {
+            padding: 40px 0; /* Shorter section */
+        }
+        .client-logos .logos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+        }
+        .client-logos .logos-grid img {
+            max-height: 45px;
+            filter: grayscale(100%) brightness(150%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .client-logos .logos-grid img:hover {
+            filter: grayscale(0%) brightness(100%);
+            opacity: 1;
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .service-item {
+            background-color: var(--primary-light);
+            padding: 35px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            text-align: left; /* Changed from center */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        }
+        .service-item .icon-placeholder {
+            font-size: 2.8rem; /* Placeholder for icon */
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            display: inline-block; /* To align with text */
+        }
+        .service-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .service-item p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .service-item a.learn-more {
+            font-weight: bold;
+            font-size: 0.9rem;
+            font-family: var(--font-secondary);
+        }
+
+        /* --- Value Proposition / Why Choose Us --- */
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .value-prop-item {
+            display: flex;
+            align-items: flex-start; /* Align icon and text to top */
+            gap: 20px;
+        }
+        .value-prop-item .icon-placeholder {
+            font-size: 2rem;
+            color: var(--secondary-accent); /* Different accent color */
+            min-width: 40px; /* Ensure consistent spacing */
+            text-align: center;
+            margin-top: 5px;
+        }
+        .value-prop-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .value-prop-item p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* --- Portfolio Teaser Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .portfolio-item {
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* Added for better structure if content height varies */
+            flex-direction: column; /* Stack image wrapper and content */
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        .portfolio-item .portfolio-image-wrapper {
+            height: 220px; /* Consistent height for the image area */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px; /* Padding around the logo inside the wrapper */
+            background-color: #f8f9fa; /* Light background for the image area */
+            box-sizing: border-box;
+        }
+        .portfolio-item img {
+            max-width: 100%;   /* Image won't exceed wrapper's content box width */
+            max-height: 100%;  /* Image won't exceed wrapper's content box height */
+            object-fit: contain; /* Scales image down to fit, preserving aspect ratio */
+            display: block;    /* Removes extra space below image */
+        }
+        .portfolio-item-content {
+            padding: 25px;
+            flex-grow: 1; /* Allows content to take remaining space if items have different text lengths */
+        }
+        .portfolio-item-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .portfolio-item-content .category {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonial-item {
+            background-color: var(--primary-light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px; /* Space between items if multiple */
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .testimonial-item blockquote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .testimonial-item blockquote::before {
+            content: '“';
+            font-size: 3rem;
+            color: var(--accent-color);
+            position: absolute;
+            left: -5px;
+            top: -10px;
+            font-family: Georgia, serif;
+        }
+        .testimonial-author {
+            text-align: right;
+        }
+        .testimonial-author strong {
+            display: block;
+            color: var(--primary-dark);
+            font-family: var(--font-secondary);
+        }
+        .testimonial-author span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Blog Teaser Section --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .blog-post-card {
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        .blog-post-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-post-content {
+            padding: 25px;
+        }
+        .blog-post-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .blog-post-content h3 a {
+            color: var(--primary-dark);
+        }
+        .blog-post-content h3 a:hover {
+            color: var(--accent-color);
+        }
+        .blog-post-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .blog-post-excerpt {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- Call to Action (CTA) Section --- */
+        .cta-section {
+            background-color: var(--accent-color);
+            color: var(--primary-light);
+            text-align: center;
+            padding: 70px 0;
+        }
+        .cta-section h2 {
+            color: var(--primary-light);
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+        }
+        .cta-section .btn {
+            background-color: var(--primary-light);
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            padding: 15px 35px;
+        }
+        .cta-section .btn:hover {
+            background-color: #f0f0f0; /* Lighter primary-light */
+            color: #e04500; /* Darker accent */
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: #aab1b9; /* Lighter muted text for footer */
+            padding: 70px 0 30px;
+            font-size: 0.95rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .footer-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+            font-family: var(--font-secondary);
+            font-weight: 600;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        .footer-column ul li a {
+            color: #aab1b9;
+        }
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        .footer-column p {
+            color: #aab1b9;
+            margin-bottom: 10px;
+        }
+        .social-icons {
+            margin-top: 15px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+            color: #aab1b9;
+            font-size: 1.3rem;
+        }
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #343f56; /* Darker border */
+            font-size: 0.9rem;
+            color: #868e96;
+        }
+        .footer-bottom a { color: #aab1b9; }
+        .footer-bottom a:hover { color: var(--accent-color); }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.4rem; }
+            .hero h1 { font-size: 2.8rem; }
+            h2, .section-title { font-size: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .section { padding: 60px 0; }
+            .hero { padding: 80px 0; min-height: auto; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-title { font-size: 1.8rem; }
+            .section-subtitle { font-size: 1rem; margin-bottom: 30px; }
+
+            header .container {
+                flex-direction: column;
+                align-items: center; /* Changed from stretch to center */
+            }
+            .logo { margin-bottom: 15px; }
+            nav ul {
+                margin-top: 10px;
+                flex-wrap: wrap; /* Allow nav items to wrap */
+                justify-content: center;
+                padding-left: 0; /* Remove default ul padding */
+            }
+            nav ul li {
+                margin: 5px 10px; /* Adjust spacing */
+            }
+            nav ul li a.btn { /* Ensure button in nav adapts */
+                margin-left: 10px; /* Adjust margin for wrapped items */
+            }
+
+            .services-grid,
+            .value-prop-grid,
+            .portfolio-grid,
+            .blog-grid {
+                grid-template-columns: 1fr; /* Stack on smaller screens */
+            }
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                /* text-align: left;  Keep text aligned for readability - this is default for block elements */
+            }
+            .footer-column {
+                margin-bottom: 30px;
+                /* text-align: center; /* Optionally center footer columns on mobile if desired */
+            }
+            .footer-bottom { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            body { line-height: 1.6; }
+            .container { width: 95%; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            .btn { padding: 10px 20px; font-size: 0.9rem; }
+            .hero .btn { padding: 12px 25px; font-size: 1rem; }
+            nav ul li { margin: 5px; } /* Further reduce nav spacing */
+            nav ul li a { font-size: 0.9rem; }
+            .service-item, .portfolio-item-content, .blog-post-content { padding: 25px 20px; }
+            .testimonial-item { padding: 25px; }
+            .testimonial-item blockquote { font-size: 1rem; }
+        }
+
+    </style>
+    <!-- Add Google Fonts (Optional, adds external dependency) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">23 Digital</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <!-- The inline style is kept as per original, but for consistency,
+                         you might prefer a CSS class like `btn-nav` or `btn-sm` -->
+                    <li><a href="#contact-cta" class="btn btn-secondary" style="padding: 8px 18px;">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>23 Digital Marketing Agency</h1>
+                <p>We partner with ambitious brands to create impactful digital strategies, design stunning websites, and deliver measurable results.</p>
+                <a href="https://www.23digital.com.au/" class="btn">Visit Our Website</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section section-alt">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">We offer a comprehensive suite of digital services designed to elevate your brand and achieve your business objectives.</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="icon-placeholder">🚀</div>
+                    <h3>Strategic SEO</h3>
+                    <p>Boost your online visibility and rank higher in search results with our data-driven SEO strategies.</p>
+                    <a href="https://www.23digital.com.au/seo-company/" class="learn-more">Discover SEO →</a>
+                </div>
+                <div class="service-item">
+                    <div class="icon-placeholder">💻</div>
+                    <h3>Web Design</h3>
+                    <p>Crafting beautiful, responsive, and high-performing websites that convert visitors effectively.</p>
+                    <a href="https://www.23digital.com.au/web-design/" class="learn-more">Explore Web Design →</a>
+                </div>
+                <div class="service-item">
+                    <div class="icon-placeholder">📊</div>
+                    <h3>Digital Marketing </h3>
+                    <p>Maximize your ROI with targeted paid campaigns managed by our certified experts.</p>
+                    <a href="https://www.23digital.com.au/digital-marketing-strategy/" class="learn-more">Learn About Digital Marketing →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition / Why Choose Us Section -->
+    <section id="about" class="value-proposition section">
+        <div class="container">
+            <h2 class="section-title">Why Partner With Us?</h2>
+            <p class="section-subtitle">We're more than just an agency; we're your dedicated partners in digital success. Here's what sets us apart.</p>
+            <div class="value-prop-grid">
+                <div class="value-prop-item">
+                    <div class="icon-placeholder">🎯</div>
+                    <div>
+                        <h3>Results-Driven Approach</h3>
+                        <p>We focus on delivering measurable results that align with your key business objectives.</p>
+                    </div>
+                </div>
+                <div class="value-prop-item">
+                    <div class="icon-placeholder">🤝</div>
+                    <div>
+                        <h3>Transparent Communication</h3>
+                        <p>Stay informed with regular updates and clear reporting on your campaign performance.</p>
+                    </div>
+                </div>
+                <div class="value-prop-item">
+                    <div class="icon-placeholder">💡</div>
+                    <div>
+                        <h3>Expert & Passionate Team</h3>
+                        <p>Our team comprises experienced professionals who are passionate about digital innovation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Teaser Section -->
+    <section id="work" class="portfolio section section-alt">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <p class="section-subtitle">Take a look at some of the successful projects we've delivered for our amazing clients.</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image-wrapper">
+                        <img src="https://www.ebdg.com.au/wp-content/uploads/2023/11/logo.png" alt="EBDG">
+                    </div>
+                    <div class="portfolio-item-content">
+                        <span class="category">Web Design</span>
+                        <h3>UIUX & Web Design</h3>
+                        <p class="mb-0">We designed the official website for EBDG, creating a modern, responsive, and brand-aligned digital experience.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image-wrapper">
+                        <img src="https://www.shadesystems.com.au/pub/media/logo/websites/1/logo.png" alt="Shade System">
+                    </div>
+                    <div class="portfolio-item-content">
+                        <span class="category">SEO & Content</span>
+                        <h3>SEO Campaign</h3>
+                        <p class="mb-0">Our agency provided comprehensive SEO services for Shade Systems, significantly enhancing their online visibility and search engine rankings.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                     <div class="portfolio-image-wrapper">
+                        <img src="https://www.aussiedisposals.com.au/media/logo/stores/1/aussie-disposals-outdoord-adventure-stores-logo.png" alt="Aussie Disposals">
+                    </div>
+                    <div class="portfolio-item-content">
+                        <span class="category">Digital Marketing</span>
+                        <h3>Digital Marketing : Social Media | PPC</h3>
+                        <p class="mb-0">Our agency managed the digital marketing strategy for Aussie Disposals, driving increased online visibility and customer engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">We're proud of the relationships we build and the results we achieve. But don't just take our word for it.</p>
+            <div class="testimonial-item">
+                <blockquote>The team at 23 Digital were absolutely amazing to wok with. Komal and Benn were both extremely helpful with our requests and really assisted with what we required. Dhrumil was exceptional and showed great dedication to our project and ran it very smoothly. He was very attentive and got back to all questions and actioned them very efficiently. Thank you all for a great experience and result!
+                </blockquote>
+                <div class="testimonial-author">
+                    <strong>Lauren Abbott</strong>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <blockquote>Our first website was created with 23 Digital several years ago, and when it was time for a fresh new look and design, we naturally returned to them. That’s exactly what was achieved—thanks to Pratik. He was incredibly patient with my schedule and went above and beyond by adding numerous features to the website. The final result exceeded my expectations—I'm thrilled with how it turned out. Thank you, Pratik, for your commitment, hard work, dedication, and outstanding customer service. It’s truly appreciated </blockquote>
+                <div class="testimonial-author">
+                    <strong>Brian Hall</strong>
+                </div>
+            </div>
+             <div class="testimonial-item">
+                <blockquote>Great experience with 23Digital! They provided excellent service, were professional and responsive throughout the process, and really understood our needs. Highly recommend them for anyone looking for reliable digital solutions.
+                </blockquote>
+                <div class="testimonial-author">
+                    <strong>EMS Engineering</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Call to Action (CTA) Section -->
+    <section id="contact-cta" class="cta-section">
+        <div class="container">
+            <h2>Ready to Grow Your Business Online?</h2>
+            <p>Let's have a conversation about your goals and how our tailored digital marketing solutions can help you achieve them. Your success is our priority.</p>
+            <a href="mailto:engage@23digital.com.au" class="btn">Schedule Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>23 Digital</h4>
+                    <p>We are a passionate team dedicated to helping businesses succeed in the digital world. Let us be your guide.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/23DigitalAgency" title="Facebook" class="fa fa-facebook" target="_blank" rel="noopener noreferrer"></a>
+                        <a href="https://x.com/23digitalagency" title="Twitter" class="fa fa-twitter" target="_blank" rel="noopener noreferrer"></a>
+                        <a href="https://www.linkedin.com/company/23-digital/" title="LinkedIn" class="fa fa-linkedin" target="_blank" rel="noopener noreferrer"></a>
+                        <a href="https://www.instagram.com/23.digital.au" title="Instagram" class="fa fa-instagram" target="_blank" rel="noopener noreferrer"></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#contact-cta">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="https://www.23digital.com.au/seo-company/">Search Engine Optimization</a></li>
+                        <li><a href="https://www.23digital.com.au/paid-media-advertising/">PPC Advertising</a></li>
+                        <li><a href="https://www.23digital.com.au/web-design/">Web Design & Development</a></li>
+                        <li><a href="https://www.23digital.com.au/social-media-marketing/">Social Media Marketing</a></li>
+                        <li><a href="https://www.23digital.com.au/mobile-app-development/">Mobile App Development</a></li>
+                        <li><a href="https://www.23digital.com.au/our-work/">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <p>Level 1, 61-63 Wellington St, <br>St. Kilda, Vic 3182.</p>
+                    <p><strong>Phone:</strong> 03 90992323</p>
+                    <p><strong>Email:</strong> <a href="mailto:engage@23digital.com.au">engage@23digital.com.au</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> <b>23 Digital</b>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script to set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
